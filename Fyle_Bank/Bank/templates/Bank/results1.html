@@ -1,0 +1,37 @@
+{% extends "Bank/base.html" %}
+{% block body_block %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Results</title>
+    <link rel="stylesheet" href="{%  static "css/mystyles.css" %}">
+</head>
+<body>
+<h1>Branch Details</h1>
+<h2>Here are access records</h2>
+<div class="djangtwo">
+  {% if bank %}
+      <table>
+        <thead>
+          <th>City name</th>
+          <th>Branch Detail</th>
+
+        </thead>
+        {% for obj in bank %}
+        <tr>
+          <td> {{ obj.city }} </td>
+          <td> {{ obj.branch }}</td>
+        </tr>
+
+        {% endfor %}
+      </table>
+  {% else %}
+    <p>NO ACCESS RECORDS FOUND</p>
+  {% endif %}
+</div>
+
+</body>
+</html>
+{% endblock %}
