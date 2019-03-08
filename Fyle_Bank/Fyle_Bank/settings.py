@@ -24,9 +24,7 @@ STATIC_DIR = os.path.join(BASE_DIR,"static")
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'glq*xjymvxc&jr@a^mli#)1s*ef$+=skrl9$1=uytm7g%hgb#5'
-SECRET_KEY = os.environ.get('SECRET_KEY')
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -84,34 +82,21 @@ WSGI_APPLICATION = 'Fyle_Bank.wsgi.application'
 # db_from_env = dj_database_url.config()
 # DATABASES['default'].update(db_from_env)
 
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('DB_NAME', 'Bank_Backup'),
-        'USER': os.environ.get('DB_USER', 'postgres'),
-        'PASSWORD': os.environ.get('DB_PASS', 'kiran'),
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE'         :'django.db.backends.postgresql',
+        'NAME'           :'Bank_Backup',
+        'USER'           :'postgres',
+        'PASSWORD'       :'kiran',
+        'HOST'           :'127.0.0.1',
+        'PORT'           :'5432',
+
     }
 }
-
-# for dj_database_url
-db_from_env = dj_database_url.config()
+db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(db_from_env)
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE'         :'django.db.backends.postgresql',
-#         'NAME'           :'Bank_Backup',
-#         'USER'           :'postgres',
-#         'PASSWORD'       :'kiran',
-#         'HOST'           :'127.0.0.1',
-#         'PORT'           :'5432',
-
-#     }
-# }
-# db_from_env = dj_database_url.config(conn_max_age=600)
-# DATABASES['default'].update(db_from_env)
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 
